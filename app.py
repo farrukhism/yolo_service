@@ -11,6 +11,8 @@ import tempfile
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
+#added for CORS support
+from flask_cors import CORS
 
 # Setup handler to catch SIGTERM from Docker
 def sigterm_handler(_signo, _stack_frame):
@@ -145,10 +147,12 @@ network, class_names, class_colors = darknet.load_network(
 )
 
 # Create API:
-app = connexion.App(__name__)
+app = connexion.FlaskApp(__name__)
 # For compatibility we will make the API available both with and without a version basepath
 app.add_api('swagger.yaml')
 app.add_api('swagger.yaml', base_path='/1.0')
+CORS(app.app)
+
 
 if __name__ == '__main__':
     signal.signal(signal.SIGTERM, sigterm_handler)
