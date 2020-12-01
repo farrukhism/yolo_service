@@ -56,6 +56,7 @@ COPY requirements.txt .
 COPY app.py .
 COPY swagger.yaml .
 RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install flask_cors
 
 # Install font
 RUN wget http://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-sans-ttf-2.37.zip
