@@ -36,4 +36,5 @@ When using the CUDA images make sure to use Docker version 19.03 (or newer) and 
 ```
 docker run -d --rm --name yolo_service -p 8080:8080 --gpus all johannestang/yolo_service:1.0_cuda10.0-yolov3_coco 
 ```
-
+## CORS Support added
+CORS support has been added for this to be used as an external service.
